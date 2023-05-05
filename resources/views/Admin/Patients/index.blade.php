@@ -25,6 +25,8 @@
             })
         </script>
     @endif
+    <a href="{{route('patient.export')}}" class="btn btn-primary" style="position: absolute; right:23px">Export</a>
+
     <div class="row my-5">
         <h3 class="fs-4 mb-3">Patients</h3>
         <div class="col">
@@ -64,8 +66,10 @@
                     @endforelse
                 </tbody>
             </table>
-            <a href="{{ route('patient.add') }}" class="btn btn-success" style="position: absolute; right:23px">Add
-                Patient</a>
-        </div>
+                <a href="{{ route('patient.add') }}" class="btn btn-success" style="position: absolute; right:23px">Add
+                    Patient</a>
+            
+            </div>
+           </div>
     </div>
 @stop()

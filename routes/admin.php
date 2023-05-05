@@ -33,6 +33,8 @@ Route::group(['prefix'=>'admin','controller'=>AdminController::class],function()
         Route::get('/{pat_id}/edit','edit')->name('patient.edit');//Return Edit From
         Route::post('/update','update')->name('patient.update');//Update Patient Data
         Route::get('/{pat_id}/delete','delete')->name('patient.delete');//Delete Patient Date
+
+        Route::get('download-excel','export')->name('patient.export');
         Route::get('{pat_id}/specific_application/','get_all_applications_for_specific_patient')->name('patient.specific_app');//Return Specific App
     });
 ############################### Patients ###############################

@@ -11,8 +11,18 @@ class DoctorController extends Controller
     use all_traits;
 ######################## Show Doctors ########################
 
-    public function get_all_doctors(){
-        $doctors = Doctor::paginate(5);
+    public function get_all_doctors(Request $request){
+        // make Filter For Doctors
+
+        $doctors = Doctor::query();
+
+        if($request->gender)
+        {
+            $doctors = $doctors->where('doc_gender',$request->gender);
+        }
+
+        $doctors = $doctors->paginate(config('app.PAGNATION'));
+
         return view('Admin.Doctors.index',compact('doctors'));
     }
 ######################## Show Doctors ########################

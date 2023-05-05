@@ -25,6 +25,41 @@
             })
         </script>
     @endif
+
+
+    {{-- Magdy Changes --}}
+
+    <div class="card">
+        <form action="{{route('all.doctors')}}">
+        
+            <div class="card-header">
+                Filter Doctors
+              </div>
+              <div class="card-body">
+                  <div class="row align-items-center"> 
+                  <div class="col-md-12 justify-content-start row">
+                     
+                      <div class="col-md-3">
+                          <select name="gender" class="form-select" id="gender">
+                              <option value="">Gender</option>
+                              <option value="{{old('gender','0')}}">Male</option>
+                              <option value="{{old('gender','1')}}">Female</option>
+                          </select>
+                      </div>
+                      <div class="col-md-2">
+                          <button
+                              class="btn btn-primary">Search</button>
+                      </div>
+                  </div>
+              </div>
+              </div>
+        </form>
+        
+      </div>
+    
+
+
+
     <div class="row my-5">
         <h3 class="fs-4 mb-3">Doctors</h3>
         <div class="col">

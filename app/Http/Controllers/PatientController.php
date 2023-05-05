@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Export\PatientExport;
 use App\Models\Patient;
 use App\Traits\all_traits;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PatientController extends Controller
 {
@@ -88,7 +90,11 @@ class PatientController extends Controller
     }
 ######################## Delete Patient ########################
 
-
+// Export Patient Excel Sheet 
+public function export()
+{
+    return Excel::download(new PatientExport, 'patient.xlsx');
+}
 
 ######################## Rules ############################
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h2 class="my-4 text-secondary">Add New Doctor</h2>
+    <h2 class="my-4 text-secondary">Update Doctor</h2>
     <form method="post" action="{{ route('doctor.update') }}" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">

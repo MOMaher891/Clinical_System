@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
-    protected $fillable = ['id','pat_name','pat_gender'];
+    protected $fillable = ['id','pat_name','pat_gender','pat_nat_id','pat_age'];
     public $timestamps = false;
 
     ################################ Handel Doctor Gender ################################

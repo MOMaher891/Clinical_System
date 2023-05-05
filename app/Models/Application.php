@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
-    protected $fillable = ['id','pat_name','pat_gender'];
+    protected $fillable = ['id','patient_id','department_id','created_at'];
     public $timestamps = false;
 
     ################################ Relation with patient table ################################
@@ -15,5 +15,11 @@ class Application extends Model
         return $this->belongsTo('App\Models\Patient','patient_id');
     }
     ################################ Relation with patient table ################################
+
+    ################################ Relation with department table ################################
+    public function department(){
+        return $this->belongsTo('App\Models\Department','department_id');
+    }
+    ################################ Relation with department table ################################
     use HasFactory;
 }

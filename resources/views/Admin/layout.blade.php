@@ -11,7 +11,10 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
     <link rel="shortcut icon" href="{{ asset('Admin/Images/logo_tab.jpg') }}" type="image/x-icon" sizes="32x32">
     <link rel="stylesheet" href="{{ asset('Admin/css/style.css') }}" />
@@ -39,7 +42,8 @@
                 <a href="{{ route('all.patients') }}"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-hospital-user"></i> Patients</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="{{ route('all.departments') }}"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-building"></i> Departments</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-power-off me-2"></i>Logout</a>
@@ -98,6 +102,15 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    <script src="cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/js/jquery.min.jss"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+        integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/javascript">
+        $('#patient_search').select2();
+    </script>
 </body>
 
 </html>

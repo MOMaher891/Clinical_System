@@ -26,6 +26,16 @@
                 <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>
+
+        {{-- <div class="mb-3">
+            <select name="department" class="form-control">
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select>
+        </div> --}}
+
+
+
         <div class="mb-3">
             <select name="doc_gender" class="form-control">
                 <option value="0">Male</option>

@@ -46,6 +46,16 @@
                               <option value="{{old('gender','1')}}">Female</option>
                           </select>
                       </div>
+
+                      
+                      <div class="col-md-3">
+                        <select name="department_id" class="form-select" id="department_id">
+                            <option value="">Departments</option>
+                                @foreach ($departments as $dep)
+                                    <option value="{{$dep->id}}">{{$dep->name}}</option>
+                                @endforeach
+                            </select>
+                    </div>
                       <div class="col-md-2">
                           <button
                               class="btn btn-primary">Search</button>
@@ -69,6 +79,7 @@
                         <th scope="col" width="50">#</th>
                         <th scope="col">Doctor</th>
                         <th scope="col">Position</th>
+                        <th scope="col">Department</th>
                         <th scope="col">Gender</th>
                         <th></th>
                     </tr>
@@ -82,6 +93,8 @@
                             <td>{{ $doctor->doc_name }}</td>
                             <td>{{ $doctor->doc_position }}</td>
                             <td>{{ $doctor->doc_gender }}</td>
+                            <td>{{ $doctor->department->dep_name }}</td>
+
                             <td>
                                 <a href="{{ route('doctor.edit', ['doc_id' => $doctor['id']]) }}" class="text-success"><i
                                         class="fa-regular fa-pen-to-square"></i></a>

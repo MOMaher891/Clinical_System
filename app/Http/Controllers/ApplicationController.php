@@ -8,7 +8,7 @@ use App\Models\Patient;
 use App\Traits\all_traits;
 use Illuminate\Http\Request;
 
-define('PAGINATION_COUNT',5);
+// define('PAGINATION_COUNT',5);
 
 class ApplicationController extends Controller
 {

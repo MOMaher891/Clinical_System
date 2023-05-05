@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Doctor;
 use App\Traits\all_traits;
 use Illuminate\Http\Request;
@@ -22,15 +23,17 @@ class DoctorController extends Controller
         }
 
         $doctors = $doctors->paginate(config('app.PAGNATION'));
-
-        return view('Admin.Doctors.index',compact('doctors'));
+        $departments = Department::all(); 
+        return view('Admin.Doctors.index',compact('doctors','departments'));
     }
 ######################## Show Doctors ########################
 
 
 ######################## ADD Doctor ########################
     public function add(){
-        return view('Admin.Doctors.add');
+        $departments = Department::all(); 
+
+        return view('Admin.Doctors.add',['departments'=>$departments]);
     }
 
     public function store(Request $request){
@@ -57,7 +60,7 @@ class DoctorController extends Controller
         if(!$doctor){
             return redirect()->route('all.doctors')->with(['error'=>'Doctor Not Founded']);
         }
-        return view('Admin.Doctors.edit',compact('doctor'));
+        return view('Admin.Doctors.edit',compact('doctor','departments'));
     }
 
     public function update(Request $request){

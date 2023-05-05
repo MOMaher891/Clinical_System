@@ -7,10 +7,10 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
-define('PAGINATION_COUNT',5);
+// define('PAGINATION_COUNT',5);
 
 
-Route::group(['prefix'=>'admin','controller'=>AdminController::class],function(){
+Route::group(['prefix'=>'admin','middleware'=>'auth','controller'=>AdminController::class],function(){
     //Return DashBoard View
     Route::get('/index','index')->name('admin.home');
 

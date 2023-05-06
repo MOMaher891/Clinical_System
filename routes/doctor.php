@@ -12,5 +12,6 @@ Route::post('doctor/login',[AuthController::class,'login'])->name('doctor.login'
 Route::group(['prefix'=>'doctor','middleware'=>'auth:doctor','controller'=>DoctorController::class],function(){
 
     Route::get('/index','index')->name('doctor.home');
+    Route::post('/medical-statment','store')->name('doctor.medical.state');
 
 });

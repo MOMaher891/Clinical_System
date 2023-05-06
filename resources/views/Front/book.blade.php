@@ -20,11 +20,19 @@
             <div class="user">
                 <div class="input-box">
                     <span class="details">Name</span>
-                    <input type="text" class="form-control" name="pat_name" placeholder="Enter your name" required>
+                    <input type="text" class="form-control" name="pat_name" placeholder="Enter your name"
+                        value="{{ old('pat_name') }}" required>
+                    @error('pat_name')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="input-box">
                     <span class="details">National ID</span>
-                    <input type="id" class="form-control" name="pat_nat_id" placeholder="Enter your ID" required>
+                    <input type="id" class="form-control" name="pat_nat_id" placeholder="Enter your ID"
+                        value="{{ old('pat_nat_id') }}" required>
+                    @error('pat_nat_id')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="input-box">
                     <span class="details">Gender</span>
@@ -36,7 +44,10 @@
                 <div class="input-box">
                     <span class="details">Birth Date</span>
                     <input type="date" name="pat_age" class="form-control" placeholder="Enter your Birth-date"
-                        required>
+                        value="{{ old('pat_age') }}" required>
+                    @error('pat_age')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
 
             </div>

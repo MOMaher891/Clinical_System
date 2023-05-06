@@ -203,9 +203,24 @@
                             <div class="overlay"></div>
                             <div class="card-content" style="opacity: 100%;z-index: 1;">
                                 <h1>{{ $dep->dep_name }}</h1>
-                                <p>Creeping for female light years that lesser can't evening heaven isn't bearing tree
-                                    appear
-                                </p>
+                                <div class="rating">
+
+                                    @php
+                                        $unrate = 5 - $dep->dep_rate;
+                                        $rate = 5 - $unrate;
+                                    @endphp
+
+                                    @for ($i = 0; $i < $rate; $i++)
+                                        <i class="fas fa-star" style="color:#FFC107"></i>
+                                    @endfor
+
+                                    @for ($i = 0; $i < $unrate; $i++)
+                                        <i class="far fa-star" style="color:#FFC107"></i>
+                                    @endfor
+
+
+                                </div>
+                                <p>{{ $dep->dep_price }}.LE</p>
                                 <a class="btn btn-success book"
                                     href="{{ route('book.specific.department', $dep->id) }}">Book</a>
                             </div>
@@ -226,121 +241,31 @@
 
     <!--Who We Are -->
 
-    <!-- <i class="fa-solid fa-quote-left"></i>
-        <div class="container">
-            <div class="text">
-                <h1>Who We Are</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt neque consectetur facilis
-                    distinctio dolor delectus tempore omnis molestias iste porro, fugiat sit hic tempora harum animi
-                    officia error totam rem!</p>
-            </div>
-        </div> -->
     <!-- Who We Ares -->
     <div class="testimonials who-we-are" id="who-we-are">
         <div class="overlay"></div>
 
         <div class="container">
             <div class="main-heading">
-                <h1>Our Team</h1>
+                <h1>Our Doctors</h1>
             </div>
             <div class="testimonials-content">
 
-                <div class="ts-box">
+                @foreach ($doctors as $doc)
+                    <div class="ts-box">
 
-                    <div class="person-info">
-                        <img src="Image/try1.jpeg" alt="">
-                        <h4>Eng.Mohamed Magdy</h4>
-                        <p>Vezzeta Member</p>
+                        <div class="person-info">
+                            <img src="{{ asset('Admin/Images/Doctors/' . $doc->doc_image) }}" alt="">
+                            <h4>Dr.{{ $doc->doc_name }}</h4>
+                            <p>{{ $doc->department->dep_name }}</p>
+                        </div>
+                        <div class="media-icons">
+                            <i class="fab fa-facebook"></i>
+                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-github"></i>
+                        </div>
                     </div>
-                    <div class="media-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-github"></i>
-                    </div>
-                </div>
-
-                <div class="ts-box">
-
-                    <div class="person-info">
-                        <img src="Image/try2.jpeg" alt="">
-                        <h4>Eng.Mohamed Maher</h4>
-                        <p>Vezzeta Member</p>
-                    </div>
-                    <div class="media-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-github"></i>
-                    </div>
-                </div>
-
-                <div class="ts-box">
-
-                    <div class="person-info">
-                        <img src="Image/try3.jpeg" alt="">
-                        <h4>Eng.Mohamed Yasser</h4>
-                        <p>Vezzeta Member</p>
-                    </div>
-                    <div class="media-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-github"></i>
-                    </div>
-                </div>
-                <div class="ts-box">
-
-                    <div class="person-info">
-                        <img src="Image/try4.jpeg" alt="">
-                        <h4>Marwa Mostafa Arafat</h4>
-                        <p>Vezzeta Member</p>
-                    </div>
-                    <div class="media-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-github"></i>
-                    </div>
-                </div>
-
-                <div class="ts-box">
-
-                    <div class="person-info">
-                        <img src="Image/try5.jpeg" alt="">
-                        <h4>Maram Essam</h4>
-                        <p>Vezzeta Member</p>
-                    </div>
-                    <div class="media-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-github"></i>
-                    </div>
-                </div>
-
-                <div class="ts-box">
-
-                    <div class="person-info">
-                        <img src="Image/try6.jpeg" alt="">
-                        <h4>Nada Gamal Sophy</h4>
-                        <p>Vezzeta Member</p>
-                    </div>
-                    <div class="media-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-github"></i>
-                    </div>
-                </div>
-                <div class="ts-box">
-                    <div class="person-info">
-                        <img src="Image/try7.jpeg" alt="">
-                        <h4>Nour Mostaffa</h4>
-                        <p>Vezzeta Member</p>
-                    </div>
-                    <div class="media-icons">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-github"></i>
-                    </div>
-                </div>
-
-
+                @endforeach
 
             </div>
         </div>
@@ -356,25 +281,25 @@
             <div class="information active">
                 <i class="fa-solid fa-user-doctor"></i>
                 <h1>Doctors</h1>
-                <h4>457</h4>
+                <h4>{{ $doc_count }}</h4>
                 <p>Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
             </div>
             <div class="information">
                 <i class="fa-solid fa-hospital-user"></i>
                 <h1>Patients</h1>
-                <h4>14016</h4>
+                <h4>{{ $pat_count }}</h4>
                 <p>Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
             </div>
             <div class="information">
                 <i class="fa-solid fa-bed-pulse"></i>
-                <h1>Sergury</h1>
-                <h4>524</h4>
+                <h1>Applications</h1>
+                <h4>{{ $app_count }}</h4>
                 <p>Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
             </div>
             <div class="information">
                 <i class="fa-solid fa-square-poll-vertical"></i>
-                <h1>Test Results</h1>
-                <h4>14016</h4>
+                <h1>Departments</h1>
+                <h4>{{ $dep_count }}</h4>
                 <p>Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
             </div>
         </div>
@@ -447,7 +372,6 @@
                                 <i class="fas fa-star"></i>
                                 <i class="far fa-star"></i>
                                 <i class="far fa-star"></i>
-
                             </div>
 
                             <div class="button">

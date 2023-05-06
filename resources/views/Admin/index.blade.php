@@ -85,7 +85,7 @@
 
                     </tbody>
                 </table>
-                <a href="{{ route('all.applications') }}">Show All</a>
+                {{ $applications->links() }}
             </div>
         </div>
 
@@ -120,7 +120,7 @@
                         @endforelse
                     </tbody>
                 </table>
-                <a href="{{ route('all.doctors') }}">Show All</a>
+                {{ $doctors->links() }}
             </div>
         </div>
     </div>
@@ -158,7 +158,7 @@
 
                     </tbody>
                 </table>
-                <a href="{{ route('all.patients') }}">Show All</a>
+                {{ $patients->links() }}
             </div>
         </div>
 
@@ -199,7 +199,8 @@
                         @endforelse
                     </tbody>
                 </table>
-                <a href="{{ route('all.departments') }}">Show All</a>
+                {{-- <a href="{{ route('all.departments') }}">Show All</a> --}}
+                {{ $departments->links() }}
             </div>
         </div>
     </div>

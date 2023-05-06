@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'admin','middleware'=>'auth','controller'=>AdminController::class],function(){
     //Return DashBoard View
     Route::get('/index','index')->name('admin.home');
-
+    /**
+     * Statements
+     */
+    Route::get('all_statements','all_statements')->name('admin.all.statements');
+    Route::get('statement/{statement_id}/view','single_statement')->name('statement.specific');
 ############################### Doctors ###############################
     Route::group(['prefix'=>'doctor','controller'=>DoctorController::class],function(){
         Route::get('/all_doctors','get_all_doctors')->name('all.doctors');//Show All Doctors

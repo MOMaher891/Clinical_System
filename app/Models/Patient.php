@@ -21,6 +21,10 @@ class Patient extends Model
     public function applications(){
         return $this->hasMany('App\Models\Application','patient_id');
     }
+
+    public function statements(){
+        return $this->hasMany(MedicalStatment::class,'patient_id');
+    }
     ################################ Relation with Application table ################################
     use HasFactory;
 }

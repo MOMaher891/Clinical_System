@@ -14,7 +14,7 @@ class PatientController extends Controller
 ######################## Show Patients ########################
 
     public function get_all_patients(){
-        $patients = Patient::paginate(5);
+        $patients = Patient::paginate(config('app.PAGNATION'));
         return view('Admin.Patients.index',compact('patients'));
     }
 
@@ -90,7 +90,7 @@ class PatientController extends Controller
     }
 ######################## Delete Patient ########################
 
-// Export Patient Excel Sheet 
+// Export Patient Excel Sheet
 public function export()
 {
     return Excel::download(new PatientExport, 'patient.xlsx');
@@ -117,4 +117,3 @@ public function export()
 
 ######################## Rules ############################
 }
- 

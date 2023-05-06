@@ -12,13 +12,7 @@
                 <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Doctor Position</label>
-            <input type="text" class="form-control" name="doc_position" value="{{ old('doc_position') }}">
-            @error('doc_position')
-                <p class="text-danger">{{ $message }}</p>
-            @enderror
-        </div>
+
         <div class="mb-3">
             <label class="form-label">Doctor Image</label>
             <input type="file" class="form-control" name="doc_image">
@@ -27,16 +21,19 @@
             @enderror
         </div>
 
-        {{-- <div class="mb-3">
-            <select name="department" class="form-control">
-                <option value="0">Male</option>
-                <option value="1">Female</option>
+        <div class="mb-3">
+            <label class="form-label">Department</label>
+            <select name="department_id" class="form-control">
+                @foreach ($departments as $dep)
+                    <option value="{{ $dep->id }}">{{ $dep->dep_name }}</option>
+                @endforeach
             </select>
-        </div> --}}
+        </div>
 
 
 
         <div class="mb-3">
+            <label class="form-label">Gender</label>
             <select name="doc_gender" class="form-control">
                 <option value="0">Male</option>
                 <option value="1">Female</option>

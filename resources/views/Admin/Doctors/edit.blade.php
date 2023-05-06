@@ -16,18 +16,21 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Doctor Position</label>
-            <input type="text" class="form-control" name="doc_position" value="{{ $doctor['doc_position'] }}">
-            @error('doc_position')
-                <p class="text-danger">{{ $message }}</p>
-            @enderror
-        </div>
-        <div class="mb-3">
             <label class="form-label">Doctor Image</label>
             <input type="file" class="form-control" name="doc_image" value="{{ $doctor['doc_image'] }}">
             @error('doc_image')
                 <p class="text-danger">{{ $message }}</p>
             @enderror
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Department</label>
+            <select name="department_id" class="form-control">
+                @foreach ($departments as $dep)
+                    <option value="{{ $dep->id }}" @if ($doctor->department_id == $dep->id) selected @endif>
+                        {{ $dep->dep_name }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <select name="doc_gender" class="form-control">

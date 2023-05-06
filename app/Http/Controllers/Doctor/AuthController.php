@@ -25,6 +25,7 @@ class AuthController extends Controller
 
         if(Auth::guard('doctor')->attempt(['email' => $request->email, 'password' =>$request->password]))
         {
+            $doctor_name =
             return redirect(route('doctor.home'));
         }else{
             return redirect()->back()->with('error','Invaild Email or Password');

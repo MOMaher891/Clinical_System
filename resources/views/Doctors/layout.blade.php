@@ -18,7 +18,7 @@
 
     <link rel="shortcut icon" href="{{ asset('Admin/Images/logo_tab.jpg') }}" type="image/x-icon" sizes="32x32">
     <link rel="stylesheet" href="{{ asset('Admin/css/style.css') }}" />
-    <title>Admin Dashboard</title>
+    <title>Doctor Dashboard</title>
 </head>
 
 <body>
@@ -30,31 +30,13 @@
                 <img src="{{ asset('Admin/Images/logo.jpg') }}" alt="">
             </div>
             <div class="list-group list-group-flush my-3">
-                {{-- <a href="{{ route('admin.home') }}"
+                <a href="{{ route('doctor.home') }}"
                     class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                <a href="{{ route('all.doctors') }}"
+                <a href="{{ route('all.statements') }}"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fa-solid fa-user-doctor"></i> Doctor</a>
-                <a href="{{ route('all.applications') }}"
-                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fa-solid fa-ticket"></i> Applications</a>
-                <a href="{{ route('all.patients') }}"
-                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fa-solid fa-hospital-user"></i> Patients</a>
-                <a href="{{ route('all.departments') }}"
-                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fa-solid fa-building"></i> Departments</a>
-                <form action="{{route('logout')}}" method="POST" class="d-inline">
-                   @csrf
-                    <button class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
-                        <i class="fas fa-power-off me-2"></i>
-                        Logout</button>       
-            
-                </form> --}}
-                    
-                {{-- <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
-                        class="fas fa-power-off me-2"></i>Logout</a> --}}
+                        class="fa-solid fa-notes-medical"></i> Statment</a>
+
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -78,18 +60,18 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>{{auth()->user()->name}}
+                                <i class="fas fa-user me-2"></i>{{ Auth::guard('doctor')->user()->doc_name }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {{-- <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Settings</a></li> --}}
                                 <li>
-                                    <form action="{{route('logout')}}" method="POST" class="d-inline">
-                                        <button class="text-danger dropdown-item">Logout</button>       
-                                    {{-- <a class="dropdown-item" href="#">Logout</a> --}}
+                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                        <button class="text-danger dropdown-item">Logout</button>
+                                        {{-- <a class="dropdown-item" href="#">Logout</a> --}}
 
                                     </form>
-                                
+
                                 </li>
                             </ul>
                         </li>

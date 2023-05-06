@@ -18,7 +18,7 @@ class ApplicationController extends Controller
 
         $applications =  Application::query()->with('department','patient');
 
-        // select from  application ,departiment , patient 
+        // select from  application ,departiment , patient
 
         if(isset($request->patient_id))
         {
@@ -43,8 +43,8 @@ class ApplicationController extends Controller
 
         }
 
-        
-        $applications = $applications->paginate(PAGINATION_COUNT);
+
+        $applications = $applications->paginate(config('app.PAGNATION'));
 
         $patients = Patient::all();
         $departments = Department::all();

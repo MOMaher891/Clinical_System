@@ -68,6 +68,7 @@
             </table>
             <a href="{{ route('department.add') }}" class="btn btn-success" style="position: absolute; right:23px">Add
                 Department</a>
+            {{ $departments->onEachSide(1)->links() }}
         </div>
     </div>
 @stop()

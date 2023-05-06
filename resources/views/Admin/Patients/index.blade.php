@@ -25,7 +25,7 @@
             })
         </script>
     @endif
-    <a href="{{route('patient.export')}}" class="btn btn-success" style="position: absolute; right:23px">Export</a>
+    <a href="{{ route('patient.export') }}" class="btn btn-success" style="position: absolute; right:23px">Export</a>
 
     <div class="row my-5">
         <h3 class="fs-4 mb-3">Patients</h3>
@@ -55,8 +55,8 @@
                             <td>
                                 <a href="{{ route('patient.edit', ['pat_id' => $patient['id']]) }}" class="text-success"><i
                                         class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="{{ route('patient.delete', ['pat_id' => $patient['id']]) }}" class="text-danger"><i
-                                        class="fa-regular fa-trash-can"></i></a>
+                                <a href="{{ route('patient.delete', ['pat_id' => $patient['id']]) }}"
+                                    class="text-danger"><i class="fa-regular fa-trash-can"></i></a>
                             </td>
                         </tr>
                     @empty
@@ -66,10 +66,11 @@
                     @endforelse
                 </tbody>
             </table>
-                <a href="{{ route('patient.add') }}" class="btn btn-success" style="position: absolute; right:23px">Add
-                    Patient</a>
-            
-            </div>
-           </div>
+            <a href="{{ route('patient.add') }}" class="btn btn-success" style="position: absolute; right:23px">Add
+                Patient</a>
+            {{ $patients->onEachSide(1)->links() }}
+
+        </div>
+    </div>
     </div>
 @stop()

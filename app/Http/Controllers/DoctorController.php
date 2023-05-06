@@ -23,7 +23,7 @@ class DoctorController extends Controller
         }
 
         $doctors = $doctors->paginate(config('app.PAGNATION'));
-        $departments = Department::all(); 
+        $departments = Department::all();
         return view('Admin.Doctors.index',compact('doctors','departments'));
     }
 ######################## Show Doctors ########################
@@ -31,7 +31,7 @@ class DoctorController extends Controller
 
 ######################## ADD Doctor ########################
     public function add(){
-        $departments = Department::all(); 
+        $departments = Department::all();
 
         return view('Admin.Doctors.add',['departments'=>$departments]);
     }
@@ -42,12 +42,15 @@ class DoctorController extends Controller
         if($validation){
             return $validation;
         }
+
         $image =$this->save_image($request , 'Admin/Images/Doctors','doc_image');
         Doctor::create([
             'doc_name'=>$request->doc_name,
-            'doc_position'=>$request->doc_position,
             'doc_image'=>$image,
-            'doc_gender'=>$request->doc_gender
+            'doc_gender'=>$request->doc_gender,
+            'department_id'=>$request->department_id,
+            'email'=>$request->doc_name."@doctor.com",
+            'password'=>"$2y$10$0yFa7CC9s.XgHA5P6eFOS.Eaui8HPo0rPZEwdGaTSRVP2mtzswOjW"
         ]);
         return redirect()->route('all.doctors')->with(['success'=>'Doctor Added Successfully']);
     }
@@ -60,6 +63,7 @@ class DoctorController extends Controller
         if(!$doctor){
             return redirect()->route('all.doctors')->with(['error'=>'Doctor Not Founded']);
         }
+        $departments = Department::get();
         return view('Admin.Doctors.edit',compact('doctor','departments'));
     }
 
@@ -97,7 +101,7 @@ class DoctorController extends Controller
     protected function add_doctor_rules(){
         return $rules = [
             'doc_name'=>'required|unique:doctors,doc_name',
-            'doc_position'=>'required',
+            'department_id'=>'required',
             'doc_image'=>'required',
             'doc_gender'=>'required'
         ];
@@ -105,7 +109,7 @@ class DoctorController extends Controller
     protected function update_doctor_rules(){
         return $rules = [
             'doc_name'=>'required',
-            'doc_position'=>'required',
+            'department_id'=>'required',
             'doc_image'=>'required',
             'doc_gender'=>'required'
         ];

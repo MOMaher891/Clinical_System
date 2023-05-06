@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
-    protected $fillable = ['id','patient_id','department_id','created_at'];
+    protected $fillable = ['id','patient_id','department_id','created_at','app_code'];
     public $timestamps = false;
 
     ################################ Relation with patient table ################################

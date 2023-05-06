@@ -29,65 +29,64 @@
 
     {{-- Magdy Changes --}}
 
-    
+
     {{-- Magdy Changes --}}
 
     <div class="card">
-        <form action="{{route('all.applications')}}">
-        
+        <form action="{{ route('all.applications') }}">
+
             <div class="card-header">
                 Filter Applications
-              </div>
-              <div class="card-body">
-                  <div class="row align-items-center"> 
-                  <div class="col-md-12 justify-content-start row">
-                     
-                      <div class="col-md-3">
-                        <label for="department_id">Department</label>
-                          <select name="department_id" class="form-select" id="department_id">
-                              <option value="">Departments</option>
-                              @foreach ($departments as $dep )
-                                <option value="{{$dep->id}}">{{$dep->dep_name}}</option>                                  
-                              @endforeach
-                            
-                          </select>
-                      </div>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-12 justify-content-start row">
 
-                      
-                      <div class="col-md-3">
-                        <label for="time_from">Patient</label>
-                      
-                        <select name="patient_id" class="form-select" id="patient_id">
-                            @foreach ($patients as $pat )
+                        <div class="col-md-3">
+                            <label for="department_id">Department</label>
+                            <select name="department_id" class="form-select" id="department_id">
                                 <option value="">Departments</option>
-                              <option value="{{$pat->id}}">{{$pat->pat_name}}</option>                                  
-                            @endforeach             
-                        </select>
-                    </div>
-      
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="time_from">Time From</label>
-                            <input type="date" name="time_from"  class="form-control">
+                                @foreach ($departments as $dep)
+                                    <option value="{{ $dep->id }}">{{ $dep->dep_name }}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <label for="time_from">Patient</label>
+
+                            <select name="patient_id" class="form-select" id="patient_id">
+                                <option value="">Patients</option>
+                                @foreach ($patients as $pat)
+                                    <option value="{{ $pat->id }}">{{ $pat->pat_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="time_from">Time From</label>
+                                <input type="date" name="time_from" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="time_from">Time To</label>
+                                <input type="date" name="time_to" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-2 mt-3">
+                            <button class="btn btn-primary">Search</button>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="time_from">Time To</label>
-                            <input type="date" name="time_to"  class="form-control">
-                        </div>
-                    </div>
-                      <div class="col-md-2 mt-3">
-                          <button
-                              class="btn btn-primary">Search</button>
-                      </div>
-                  </div>
-              </div>
-              </div>
+                </div>
+            </div>
         </form>
-        
-      </div>
-    
+
+    </div>
+
 
 
 
@@ -134,8 +133,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{-- <a href="{{ route('application.add') }}" class="btn btn-success" style="position: absolute; right:23px">Add
-                Application</a> --}}
+            {{ $applications->onEachSide(1)->links() }}
         </div>
     </div>
 @stop()

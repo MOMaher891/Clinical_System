@@ -30,43 +30,42 @@
     {{-- Magdy Changes --}}
 
     <div class="card">
-        <form action="{{route('all.doctors')}}">
-        
+        <form action="{{ route('all.doctors') }}">
+
             <div class="card-header">
                 Filter Doctors
-              </div>
-              <div class="card-body">
-                  <div class="row align-items-center"> 
-                  <div class="col-md-12 justify-content-start row">
-                     
-                      <div class="col-md-3">
-                          <select name="gender" class="form-select" id="gender">
-                              <option value="">Gender</option>
-                              <option value="{{old('gender','0')}}">Male</option>
-                              <option value="{{old('gender','1')}}">Female</option>
-                          </select>
-                      </div>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-12 justify-content-start row">
 
-                      
-                      <div class="col-md-3">
-                        <select name="department_id" class="form-select" id="department_id">
-                            <option value="">Departments</option>
+                        <div class="col-md-3">
+                            <select name="gender" class="form-select" id="gender">
+                                <option value="">Gender</option>
+                                <option value="{{ old('gender', '0') }}">Male</option>
+                                <option value="{{ old('gender', '1') }}">Female</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <select name="department_id" class="form-select" id="department_id">
+                                <option value="">Departments</option>
                                 @foreach ($departments as $dep)
-                                    <option value="{{$dep->id}}">{{$dep->name}}</option>
+                                    <option value="{{ $dep->id }}">{{ $dep->dep_name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary">Search</button>
+                        </div>
                     </div>
-                      <div class="col-md-2">
-                          <button
-                              class="btn btn-primary">Search</button>
-                      </div>
-                  </div>
-              </div>
-              </div>
+                </div>
+            </div>
         </form>
-        
-      </div>
-    
+
+    </div>
+
 
 
 
@@ -78,9 +77,8 @@
                     <tr>
                         <th scope="col" width="50">#</th>
                         <th scope="col">Doctor</th>
-                        <th scope="col">Position</th>
-                        <th scope="col">Department</th>
                         <th scope="col">Gender</th>
+                        <th scope="col">Department</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -91,7 +89,6 @@
                                     style="width:50px;border-radius:50%;object-fit:cover" alt="">
                             </td>
                             <td>{{ $doctor->doc_name }}</td>
-                            <td>{{ $doctor->doc_position }}</td>
                             <td>{{ $doctor->doc_gender }}</td>
                             <td>{{ $doctor->department->dep_name }}</td>
 
@@ -106,6 +103,7 @@
                     @endforelse
                 </tbody>
             </table>
+            {{ $doctors->links() }}
             <a href="{{ route('doctor.add') }}" class="btn btn-success" style="position: absolute; right:23px">Add
                 Doctor</a>
         </div>

@@ -45,16 +45,16 @@
                 <a href="{{ route('all.departments') }}"
                     class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-building"></i> Departments</a>
-                <form action="{{route('logout')}}" method="POST" class="d-inline">
-                   @csrf
+                <a href="{{ route('admin.all.statements') }}"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fa-solid fa-notes-medical"></i> Reports</a>
+                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    @csrf
                     <button class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
                         <i class="fas fa-power-off me-2"></i>
-                        Logout</button>       
-            
+                        Logout</button>
                 </form>
-                    
-                {{-- <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
-                        class="fas fa-power-off me-2"></i>Logout</a> --}}
+
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -78,18 +78,18 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>{{auth()->user()->name}}
+                                <i class="fas fa-user me-2"></i>{{ auth()->user()->name }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {{-- <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Settings</a></li> --}}
                                 <li>
-                                    <form action="{{route('logout')}}" method="POST" class="d-inline">
-                                        <button class="text-danger dropdown-item">Logout</button>       
-                                    {{-- <a class="dropdown-item" href="#">Logout</a> --}}
-
+                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <button class="text-danger dropdown-item">Logout</button>
+                                        {{-- <a class="dropdown-item" href="#">Logout</a> --}}
                                     </form>
-                                
+
                                 </li>
                             </ul>
                         </li>
